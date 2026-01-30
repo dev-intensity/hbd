@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ira 🎉</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        * {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            touch-action: pan-y;
+        }
+        
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .password-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .birthday-page {
+            background: linear-gradient(to bottom, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+        }
+        
+        .slider-btn {
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .slider-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .heart {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .sparkle {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        /* Mobile swipe support */
+        .slide-container-inner {
+            position: relative;
+        }
+    </style>
+</head>
+<body class="m-0 p-0">
+    <!-- Password Protection Screen -->
+    <div id="passwordScreen" class="password-container min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm">
+            <div class="text-center mb-6">
+                <div class="text-5xl mb-3 sparkle">🎂</div>
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">Something Special Awaits</h1>
+                <p class="text-sm text-gray-600">Enter the password to continue</p>
+            </div>
+            <div>
+                <input 
+                    type="text" 
+                    id="passwordInput" 
+                    placeholder="Enter password" 
+                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 transition-colors mb-4 text-center text-lg"
+                    onkeypress="if(event.key === 'Enter') checkPassword()"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                />
+                <button 
+                    onclick="checkPassword()" 
+                    class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold shadow-lg transition-all duration-300 active:scale-95"
+                >
+                    Unlock 💝
+                </button>
+                <p id="errorMessage" class="text-red-500 text-center mt-4 text-sm hidden">Incorrect password. Try again!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Birthday Page (Hidden Initially) -->
+    <div id="birthdayPage" class="birthday-page hidden">
+        <!-- Background Music -->
+        <audio id="birthdayMusic" loop>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+        
+        <!-- Header -->
+        <header class="text-center py-6 px-4">
+            <h1 class="dancing-script text-4xl font-bold text-pink-600 mb-2 heart">
+                Happy Birthday Ira
+            </h1>
+            <div class="text-3xl sparkle">🎉 🎂 🎈 ✨</div>
+        </header>
+
+        <!-- Slider -->
+        <div class="slider-container mx-auto px-4 pb-8">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden" id="sliderWrapper">
+                <!-- Slide 1 - Cake (cake.png) -->
+                <div class="slide active">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-white">
+                        <p class="text-center text-base text-gray-700">
+                            You carry strength in a quiet, steady way.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 - Image 1 -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="1.jpeg" alt="Memory 1" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                            <p class="text-center text-base text-white leading-snug">
+                                You handle responsibilities with patience and care.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-white">
+                        <p class="text-center text-base text-gray-700">
+                            You give love through actions, not words.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 - Image 2 -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="2.jpeg" alt="Memory 2" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                            <p class="text-center text-base text-white leading-snug">
+                                You keep everything moving smoothly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-white">
+                        <p class="text-center text-base text-gray-700">
+                            You bring balance to the home and to life.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 6 - Image 3 -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="3.jpeg" alt="Memory 3" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                            <p class="text-center text-base text-white leading-snug">
+                                You manage so much without asking for credit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 7 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-white">
+                        <p class="text-center text-base text-gray-700">
+                            You stay calm even when things get difficult.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 8 - Image 4 -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="4.jpeg" alt="Memory 4" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                            <p class="text-center text-base text-white leading-snug">
+                                You give time, energy, and attention selflessly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 9 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-white">
+                        <p class="text-center text-base text-gray-700">
+                            You care deeply about everyone around you.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 10 - Image 5 -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="5.jpeg" alt="Memory 5" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                            <p class="text-center text-base text-white leading-snug">
+                                You lead the family with understanding.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 11 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-white">
+                        <p class="text-center text-base text-gray-700">
+                            May you always have peace in your heart.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 12 - Image 6 -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="6.jpeg" alt="Memory 6" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                            <p class="text-center text-base text-white leading-snug">
+                                May your days be light and your mind at ease.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 13 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-white">
+                        <p class="text-center text-base text-gray-700">
+                            May your efforts always be valued.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 14 - Image 7 -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="7.jpeg" alt="Memory 7" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                            <p class="text-center text-base text-white leading-snug">
+                                May you always feel supported and respected.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 15 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-white">
+                        <p class="text-center text-base text-gray-700">
+                            May life give back the kindness you give.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 16 - Image 8 -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="8.jpeg" alt="Memory 8" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                            <p class="text-center text-base text-white leading-snug">
+                                May you stay healthy, happy, and strong.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 17 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-white">
+                        <p class="text-center text-base text-gray-700">
+                            May your dreams find their way to you.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 18 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gradient-to-br from-fuchsia-200 via-pink-200 to-rose-200 flex items-center justify-center">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover opacity-18">
+                        <div class="absolute inset-0 bg-white/45"></div>
+                        <div class="relative z-10 text-center p-8">
+                            <p class="text-2xl font-semibold text-gray-800 leading-snug">
+                                May each year bring you more calm and joy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 19 - Quote -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gradient-to-br from-purple-200 via-violet-200 to-indigo-200 flex items-center justify-center">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover opacity-18">
+                        <div class="absolute inset-0 bg-white/45"></div>
+                        <div class="relative z-10 text-center p-8">
+                            <p class="text-2xl font-semibold text-gray-800 leading-snug">
+                                May you always feel loved and appreciated.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 20 - Final -->
+                <div class="slide">
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gradient-to-br from-pink-300 via-rose-300 to-amber-300 flex items-center justify-center">
+                        <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover opacity-25">
+                        <div class="absolute inset-0 bg-white/35"></div>
+                        <div class="relative z-10 text-center p-8">
+                            <p class="text-2xl font-bold text-gray-900 leading-snug">
+                                Happy Birthday to you, from me and the children.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-pink-50 to-purple-50">
+                    <button 
+                        onclick="previousSlide()" 
+                        class="slider-btn bg-white text-purple-600 px-4 py-2 rounded-full font-semibold shadow-lg text-sm"
+                        aria-label="Previous slide"
+                    >
+                        ← Prev
+                    </button>
+                    
+                    <div class="flex gap-1.5 flex-wrap justify-center" id="indicators">
+                        <span class="w-2 h-2 rounded-full bg-purple-600 cursor-pointer" onclick="goToSlide(0)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(1)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(2)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(3)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(4)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(5)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(6)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(7)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(8)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(9)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(10)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(11)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(12)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(13)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(14)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(15)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(16)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(17)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(18)"></span>
+                        <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer" onclick="goToSlide(19)"></span>
+                    </div>
+                    
+                    <button 
+                        onclick="nextSlide()" 
+                        class="slider-btn bg-white text-purple-600 px-4 py-2 rounded-full font-semibold shadow-lg text-sm"
+                        aria-label="Next slide"
+                    >
+                        Next →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 pb-8">
+            <p class="dancing-script text-2xl text-pink-600 font-bold mb-2">
+                Bless You
+            </p>
+            <div class="text-xl">🙏 💝 ✨</div>
+        </footer>
+    </div>
+
+    <script>
+        // Password Protection
+        const correctPassword = "310191"; // Change this to your desired password
+        
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const errorMessage = document.getElementById('errorMessage');
+            const music = document.getElementById('birthdayMusic');
+            
+            if (input.value === correctPassword) {
+                document.getElementById('passwordScreen').style.display = 'none';
+                document.getElementById('birthdayPage').classList.remove('hidden');
+                errorMessage.classList.add('hidden');
+                
+                // Play music when page opens
+                music.play().catch(error => {
+                    console.log('Auto-play was prevented:', error);
+                });
+            } else {
+                errorMessage.classList.remove('hidden');
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        // Slider Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('#indicators span');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => {
+                indicator.classList.remove('bg-purple-600');
+                indicator.classList.add('bg-gray-300');
+            });
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.remove('bg-gray-300');
+            indicators[index].classList.add('bg-purple-600');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+
+        // Touch/Swipe Support for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        const sliderWrapper = document.getElementById('sliderWrapper');
+
+        sliderWrapper.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        sliderWrapper.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const horizontalSwipe = Math.abs(touchEndX - touchStartX);
+            const verticalSwipe = Math.abs(touchEndY - touchStartY);
+            
+            // Only handle horizontal swipes (ignore vertical scrolling)
+            if (horizontalSwipe > verticalSwipe && horizontalSwipe > swipeThreshold) {
+                if (touchEndX < touchStartX) {
+                    // Swipe left - next slide
+                    nextSlide();
+                }
+                if (touchEndX > touchStartX) {
+                    // Swipe right - previous slide
+                    previousSlide();
+                }
+            }
+        }
+
+        // Keyboard Navigation (for desktop)
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('birthdayPage').classList.contains('hidden')) return;
+            
+            if (e.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+    </script>
+</body>
+</html>

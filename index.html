@@ -31,10 +31,35 @@
         .slide {
             display: none;
             animation: fadeIn 0.5s ease-in-out;
+            height: 100%;
         }
         
         .slide.active {
             display: block;
+        }
+
+        #sliderWrapper {
+            height: 100%;
+        }
+
+        .cake-slide {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .cake-media {
+            flex: 1;
+            min-height: 0;
+            position: relative;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+
+        .cake-caption {
+            flex-shrink: 0;
+            padding: 12px 16px;
+            background: #ffffff;
         }
         
         @keyframes fadeIn {
@@ -129,29 +154,29 @@
     </div>
 
     <!-- Birthday Page (Hidden Initially) -->
-    <div id="birthdayPage" class="birthday-page hidden">
+    <div id="birthdayPage" class="birthday-page hidden h-dvh overflow-hidden flex flex-col">
         <!-- Background Music -->
         <audio id="birthdayMusic" loop>
             <source src="music.mp3" type="audio/mpeg">
         </audio>
         
         <!-- Header -->
-        <header class="text-center py-6 px-4">
-            <h1 class="dancing-script text-4xl font-bold text-pink-600 mb-2 heart">
+        <header class="text-center py-3 px-4 shrink-0">
+            <h1 class="dancing-script text-3xl font-bold text-pink-600 mb-1 heart">
                 Happy Birthday Ira
             </h1>
-            <div class="text-3xl sparkle">🎉 🎂 🎈 ✨</div>
+            <div class="text-2xl sparkle">🎉 🎂 🎈 ✨</div>
         </header>
 
         <!-- Slider -->
-        <div class="slider-container mx-auto px-4 pb-8">
-            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden" id="sliderWrapper">
+        <div class="slider-container mx-auto px-4 pb-3 flex-1 min-h-0">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden h-full" id="sliderWrapper">
                 <!-- Slide 1 - Cake (cake.png) -->
-                <div class="slide active">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide active cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             You carry strength in a quiet, steady way.
                         </p>
@@ -171,11 +196,11 @@
                 </div>
 
                 <!-- Slide 3 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             You give love through actions, not words.
                         </p>
@@ -195,11 +220,11 @@
                 </div>
 
                 <!-- Slide 5 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             You bring balance to the home and to life.
                         </p>
@@ -219,11 +244,11 @@
                 </div>
 
                 <!-- Slide 7 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             You stay calm even when things get difficult.
                         </p>
@@ -243,11 +268,11 @@
                 </div>
 
                 <!-- Slide 9 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             You care deeply about everyone around you.
                         </p>
@@ -267,11 +292,11 @@
                 </div>
 
                 <!-- Slide 11 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             May you always have peace in your heart.
                         </p>
@@ -291,11 +316,11 @@
                 </div>
 
                 <!-- Slide 13 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             May your efforts always be valued.
                         </p>
@@ -315,11 +340,11 @@
                 </div>
 
                 <!-- Slide 15 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             May life give back the kindness you give.
                         </p>
@@ -339,11 +364,11 @@
                 </div>
 
                 <!-- Slide 17 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             May your dreams find their way to you.
                         </p>
@@ -351,11 +376,11 @@
                 </div>
 
                 <!-- Slide 18 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             May each year bring you more calm and joy.
                         </p>
@@ -363,11 +388,11 @@
                 </div>
 
                 <!-- Slide 19 - Quote -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base text-gray-700">
                             May you always feel loved and appreciated.
                         </p>
@@ -375,11 +400,11 @@
                 </div>
 
                 <!-- Slide 20 - Final -->
-                <div class="slide">
-                    <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                <div class="slide cake-slide">
+                    <div class="cake-media">
                         <img src="cake.png" alt="Cake" class="absolute inset-0 w-full h-full object-cover">
                     </div>
-                    <div class="p-4 bg-white">
+                    <div class="cake-caption">
                         <p class="text-center text-base font-semibold text-gray-900">
                             Happy Birthday to you, from me and the children.
                         </p>
@@ -431,11 +456,11 @@
         </div>
 
         <!-- Footer -->
-        <footer class="text-center py-6 pb-8">
-            <p class="dancing-script text-2xl text-pink-600 font-bold mb-2">
+        <footer class="text-center py-3 pb-4 shrink-0">
+            <p class="dancing-script text-xl text-pink-600 font-bold mb-1">
                 Bless You
             </p>
-            <div class="text-xl">🙏 💝 ✨</div>
+            <div class="text-base">🙏 💝 ✨</div>
         </footer>
     </div>
 
